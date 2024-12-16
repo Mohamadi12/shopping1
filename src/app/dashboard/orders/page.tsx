@@ -14,6 +14,7 @@ import {
     TableRow,
   } from "@/components/ui/table";
   import { client } from "@/lib/prisma";
+  import { unstable_noStore as noStore } from "next/cache";
   import React from "react";
   
   async function getData() {
@@ -44,6 +45,7 @@ import {
   
   
   const OrderPage = async () => {
+    noStore()
     const data = await getData()
   
     return (

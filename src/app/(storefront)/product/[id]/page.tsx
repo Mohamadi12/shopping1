@@ -5,6 +5,7 @@ import { ShoppingBagButton } from "@/components/global/submit-button/SubmitButto
 import { client } from "@/lib/prisma";
 import { StarIcon } from "lucide-react";
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function getData(productId: string) {
   const data = await client.product.findUnique({
@@ -27,6 +28,7 @@ export async function getData(productId: string) {
 }
 
 const ProductIdRoute = async ({params}: {params: Promise<{ id: string }>}) => {
+  noStore()
   const { id: productId } = await params;
   const data = await getData(productId);
 

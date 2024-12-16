@@ -3,6 +3,7 @@ import { DashboardStats } from "./DashboardStats";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Chart } from "./Chart";
 import { RecentSales } from "./RecentSales";
+import { unstable_noStore as noStore } from "next/cache";
 
   
   async function getData() {
@@ -32,6 +33,7 @@ import { RecentSales } from "./RecentSales";
   }
   
   export default async function Dashboard() {
+    noStore()
     const data = await getData();
   
     return (

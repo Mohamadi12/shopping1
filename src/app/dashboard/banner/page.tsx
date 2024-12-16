@@ -26,6 +26,7 @@ import { client } from "@/lib/prisma";
 import { MoreHorizontal, PlusCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
 import React from "react";
 
 async function getData() {
@@ -38,6 +39,7 @@ async function getData() {
 }
 
 const BannerRoute = async () => {
+  noStore()
   const data = await getData();
 
   return (
